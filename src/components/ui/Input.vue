@@ -13,7 +13,7 @@ import { UiIcon, UiButton } from '..';
 input {
     border: none;
     outline: none;
-
+    font-size: 1em;
     width: 95%;
 }
 
@@ -22,7 +22,7 @@ input {
     justify-content: center;
     align-items: center;
     padding: 0px 8px;
-
+    
     border-radius: 20px 20px 20px 20px;
     width: 20%;
     height: 60%;

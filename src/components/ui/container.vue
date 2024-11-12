@@ -8,7 +8,7 @@
 </template>
 <style lang="scss" scoped>
 .container {
-    max-width: 90%;
+    max-width: 80%;
     margin: auto;
 }
 </style>

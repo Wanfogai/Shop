@@ -6,7 +6,7 @@ import { UiButton } from '..';
 <template>
 
     <div class="logoContainer">
-        <svg viewBox="0 -39.5 1103 1103" width="32" height="32" class="icon" version="1.1"
+        <svg viewBox="0 -39.5 1103 1103" width="60" height="60" class="icon" version="1.1"
             xmlns="http://www.w3.org/2000/svg" fill="#000000">
             <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
             <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -54,6 +54,8 @@ import { UiButton } from '..';
 </template>
 <style lang="scss" scoped>
 .logoContainer {
+    font-size: 1.5em;
+    user-select: none;
     color: cornflowerblue;
     display: flex;
     justify-content: stretch;
