@@ -1,33 +1,31 @@
 <script lang="ts" setup>
-import { UiIcon } from '..';
-import { UiButton } from '../'
+import { PropType } from 'vue';
+import { UiIcon } from '../..';
+import { CardModel } from './models/CardModel';
+import { ButtonTypeEnum, UiButton } from '../../ui/ui-button'
 
-const props = defineProps<{
-    desc: string,
-    image: string,
-    exist: boolean,
-    raiting: number
-    price: number
-}>()
+const props = defineProps({
+    card: { type: Object as PropType<CardModel>, default: () => new CardModel() }
+})
 
 </script>
 <template>
     <div class="cardBody">
-        <div class="cardHeader"><img :src="props.image" class="itemImg">
+        <div class="cardHeader"><img :src="card.Image" class="itemImg">
         </div>
         <div class="cardCenter">
             <div class="stars">
-                    <UiIcon v-for="(, index) in 5" :type='index < props.raiting ? "enStar" : "disStar"'></UiIcon>
+                <UiIcon v-for="(, index) in 5" :type='index < card.Raiting? "enStar" : "disStar"'></UiIcon>
             </div>
-            <div class="discription">{{ props.desc }}</div>
+            <div class="discription">{{ card.Desc }}</div>
             <div class="storage">
-                <span v-if="props.exist" class="exist"> В наличии</span>
+                <span v-if="card.Exist" class="exist"> В наличии</span>
                 <span v-else class="noExist"> Нет в наличии</span>
             </div>
 
             <div class="cardFooter">
-                <span>{{ props.price }} $</span>
-                <UiButton type="solid">Подробнее ||></UiButton>
+                <span>{{ card.Price }} $</span>
+                <UiButton :type="ButtonTypeEnum.Solid">Подробнее ||></UiButton>
             </div>
         </div>
     </div>
