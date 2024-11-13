@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-import { UiIcon, UiButton } from '..';
+import { UiIcon, UiButton, ButtonTypeEnum, IconTypeEnum } from '@/components';
 </script>
 <template>
     <div class="inputContaier">
         <input type="search">
-        <UiButton type="text">
-            <UiIcon type="search"></UiIcon>
+        <UiButton :type="ButtonTypeEnum.Text">
+            <UiIcon :type="IconTypeEnum.Search"></UiIcon>
         </UiButton>
     </div>
 </template>
@@ -22,7 +22,7 @@ input {
     justify-content: center;
     align-items: center;
     padding: 0px 8px;
-    
+
     border-radius: 20px 20px 20px 20px;
     width: 20%;
     height: 60%;

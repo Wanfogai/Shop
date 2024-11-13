@@ -1,10 +1,9 @@
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, onMounted, PropType, ref } from 'vue';
-import { ButtonTypeEnum } from './enums/ButtonTypeEnum';
+import { ButtonTypeEnum } from './enums';
 //Параметры
 const props = defineProps({
     //Тип кнопки (простая кнопка или текстовая)
-    // type: "solid" | "text";
     type: { type: String as PropType<ButtonTypeEnum> },
     text: { type: String, default: '' },
     width: { type: String, default: '' },
@@ -41,10 +40,10 @@ const buttonStyle = computed(() => ({
 </script>
 
 <template>
-    <button v-if="type === 'solid'" :class="props.type" :style="buttonStyle" @click="onClick">
+    <button v-if="type === ButtonTypeEnum.Solid" :class="props.type" :style="buttonStyle" @click="onClick">
         <slot>{{ props.text }}</slot>
     </button>
-    <span v-else-if="type === 'text'" :class="props.type" @click="onClick">
+    <span v-else-if="type === ButtonTypeEnum.Text" :class="props.type" @click="onClick">
         <slot></slot>
     </span>
 </template>

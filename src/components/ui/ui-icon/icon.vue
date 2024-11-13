@@ -1,10 +1,13 @@
 <script setup lang="ts">
-const props = defineProps<{
-    type: "search" | "enStar" | "disStar"
-}>()
+import { PropType } from 'vue';
+import { IconTypeEnum } from './enums';
+
+const props = defineProps({
+    type: { type: String as PropType<IconTypeEnum> }
+})
 </script>
 <template>
-    <svg v-if="type === 'search'" fill="#000000" height="20" width="20" viewBox="-0.04 0 31.793 31.793"
+    <svg v-if="type === IconTypeEnum.Search" fill="#000000" height="20" width="20" viewBox="-0.04 0 31.793 31.793"
         xmlns="http://www.w3.org/2000/svg">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -19,7 +22,7 @@ const props = defineProps<{
             </g>
         </g>
     </svg>
-    <svg v-if="type === 'disStar'" height="16px" width="16px" version="1.1" id="Layer_1"
+    <svg v-if="type === IconTypeEnum.EmptyStar" height="16px" width="16px" version="1.1" id="Layer_1"
         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.45 511.45"
         xml:space="preserve" fill="#000000">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -45,8 +48,9 @@ const props = defineProps<{
         </g>
     </svg>
 
-    <svg  v-if="type === 'enStar'" height="16px" width="16px" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
-        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.45 511.45" xml:space="preserve" fill="#fff900">
+    <svg v-if="type === IconTypeEnum.FullStar" height="16px" width="16px" version="1.1" id="Layer_1"
+        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 511.45 511.45"
+        xml:space="preserve" fill="#fff900">
         <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
         <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
         <g id="SVGRepo_iconCarrier">

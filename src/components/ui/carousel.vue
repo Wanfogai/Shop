@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { store } from '@/app/store';
-import { UiButton } from '@/components/ui/ui-button';
+import { UiButton, ButtonTypeEnum } from '@/components';
 import { computed, onBeforeMount, onBeforeUnmount, ref } from 'vue';
-import { ButtonTypeEnum } from '@/components/ui/ui-button';
 
 
 /**Интервал переключения */
 const toggleInterval = ref()
- const wrapMargin = ref(0)
+const wrapMargin = ref(0)
 
 const currentId = ref(0)
 
@@ -42,11 +41,7 @@ const LeftButton = () => { console.log("Hello"); currentId.value++; }
 <template>
     <div class="wraper" :style="wraperStyle">
         <div class="carousel" :style="carouselStyle">
-            <UiButton :type="ButtonTypeEnum.Solid" class="scrolLeft" text="<" width="35" height="90" fontWeight="500" fontSize="30"
-                opacity="0.5" />
             <img :src="store.offers[1].image" alt="">
-            <UiButton class="scrolRight" :type="ButtonTypeEnum.Text" text=">" width="35" height="90" fontWeight="500" fontSize="30"
-                opacity="0.5" />
         </div>
     </div>
 </template>
@@ -67,9 +62,6 @@ const LeftButton = () => { console.log("Hello"); currentId.value++; }
     height: 100%;
 }
 
-.wraper .scrolRight {}
-
-.wraper .scrolLeft {}
 
 .wraper {
     width: 100%;

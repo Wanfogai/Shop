@@ -1,23 +1,24 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { UiButton, UiContainer, UiLogo, UiInput } from '..';
+import { Container, Logo, Input, UiButton, ButtonTypeEnum } from '@/components';
+
 
 //Параметры
 
 </script>
 <template>
     <div class="header">
-        <UiContainer class="header_container">
-            <UiLogo type="search">
+        <Container class="header_container">
+            <Logo type="search">
                 <h1>Core</h1>.io
-            </UiLogo>
-            <UiInput class="search"></UiInput>
+            </Logo>
+            <Input class="search"></Input>
             <div class="buttonContainer">
-                <UiButton type="text">Корзина</UiButton>
-                <UiButton type="text">Поддержка</UiButton>
-                <UiButton type="text">О нас</UiButton>
+                <UiButton :type="ButtonTypeEnum.Text">Корзина</UiButton>
+                <UiButton :type="ButtonTypeEnum.Text">Поддержка</UiButton>
+                <UiButton :type="ButtonTypeEnum.Text">О нас</UiButton>
             </div>
-        </UiContainer>
+        </Container>
     </div>
 </template>
 

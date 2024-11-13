@@ -1,10 +1,43 @@
+import Card from "@/components/widget/card/card.vue"
 import { CardModel } from "@/components/widget/card/models/CardModel"
 import { computed, reactive, ref } from "vue"
+import { Methods } from "./methods"
+
+
+
+
+//Верменно начало
+
+// Desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.",
+//     Image: "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png",
+//         Exist: false,
+//             Raiting: 2,
+//                 Price: 22,
 
 interface Offer {
     id: number,
     image: string,
 }
+
+const curdCount = 20
+
+let products: CardModel[] = []
+
+//Для генирации рандомных карт ()
+for (let index = 0; index < curdCount; index++) {
+    products.push(new CardModel({
+        Image: "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png",
+        Exist: Boolean(Methods.getRandomInt(2)),
+        Raiting: Methods.getRandomInt(6),
+        Price: Methods.getRandomInt(50000),
+        Desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt."
+    }))
+
+}
+
+//Временно Конец
+
+
 
 const useStore = () => {
 
@@ -18,43 +51,6 @@ const useStore = () => {
             image: "https://cdn.shopify.com/s/files/1/0016/3866/2201/files/Discount-Coupons-on-Online-Shopping_1024x1024.jpg?v=1667489054"
         }
     ])
-
-
-    const products = ref([
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 22, 2),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 3),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", true, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 2),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", true, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", true, 2, 1),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 2),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", true, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 10, 1),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", true, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 500, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 3),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", true, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-        new CardModel("Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt.", "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png", false, 2000, 5),
-
-    ]
-    )
-
     return { products, offers }
 }
 

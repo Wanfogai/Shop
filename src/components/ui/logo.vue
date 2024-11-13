@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-import { UiButton } from '..';
-
 </script>
 
 <template>

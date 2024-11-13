@@ -34,6 +34,8 @@ module.exports = defineConfig({
     resolve: {
       alias: {
         "@": path.resolve(__dirname, "./src"),
+        "@/components": path.resolve(__dirname, "./src/components"),
+        // "#": path.resolve(,"./src/components/ui", "./src/components/widget", "./src/components")
       },
     },
   },

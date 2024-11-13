@@ -1,20 +1,20 @@
 <script lang="ts" setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue';
-import { Header, UiContainer, Card,UiCarousel } from '@/components';
+import { Header, Container, Card, Carousel } from '@/components';
 import { store } from './store/store';
 </script>
 
 <template>
     <Header />
-    <UiContainer class="Offers">
-      
-        <UiCarousel > Hello world</UiCarousel>
+    <Container class="Offers">
+
+        <Carousel> Hello world</Carousel>
+
+    </Container>
+    <Container class="body">
+        <Card v-for="item in store.products" :card="item" />
         
-    </UiContainer>
-    <UiContainer class="body">
-        <Card v-for="item in store.products" :desc="item.Desc" :image="item.Image" :exist="item.Exist"
-            :price="item.Price" :raiting="item.Raiting" />
-    </UiContainer>
+    </Container>
 </template>
 
 <style lang="scss" scoped>
@@ -30,7 +30,7 @@ import { store } from './store/store';
 .body {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     margin: 30px auto;
     height: 100%;
