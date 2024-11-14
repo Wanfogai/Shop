@@ -14,7 +14,7 @@ import { store } from './store/store';
         <Card v-for="item in store.products" :card="item" />
 
     </Container>
-    <UiButton :type="ButtonTypeEnum.Text" class="basket">
+    <UiButton :type="ButtonTypeEnum.Text" class="basket" >
         <UiIcon :type="IconTypeEnum.Basket"></UiIcon>
     </UiButton>
 </template>

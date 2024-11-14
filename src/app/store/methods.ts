@@ -3,4 +3,3 @@ export class Methods {
         return Math.floor(Math.random() * max);
     }
 }
-
