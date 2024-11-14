@@ -8,28 +8,28 @@ const props = defineProps({
 })
 
 </script>
-<template >
-        <div class="cardBody">
-            <div class="cardHeader"><img :src="card.Image" class="itemImg">
+<template>
+    <div class="cardBody">
+        <div class="cardHeader"><img :src="card.Image" class="itemImg">
+        </div>
+        <div class="cardCenter">
+            <div class="stars">
+                <UiIcon v-for="(index) in 5"
+                    :type='index <= card.Raiting ? IconTypeEnum.FullStar : IconTypeEnum.EmptyStar'></UiIcon>
             </div>
-            <div class="cardCenter">
-                <div class="stars">
-                    <UiIcon v-for="(index) in 5"
-                        :type='index <= card.Raiting ? IconTypeEnum.FullStar : IconTypeEnum.EmptyStar'></UiIcon>
-                </div>
-                <div class="discription">{{ card.Desc }}</div>
-                <div class="storage">
-                    <span v-if="card.Exist" class="exist"> В наличии</span>
-                    <span v-else class="noExist"> Нет в наличии</span>
-                </div>
+            <div class="discription">{{ card.Desc }}</div>
+            <div class="storage">
+                <span v-if="card.Exist" class="exist"> В наличии</span>
+                <span v-else class="noExist"> Нет в наличии</span>
+            </div>
 
-                <div class="cardFooter">
-                    <span>{{ card.Price }} $</span>
-                    <UiButton :type="ButtonTypeEnum.Solid">Подробнее ||></UiButton>
-                </div>
+            <div class="cardFooter">
+                <span>{{ card.Price }} $</span>
+                <UiButton :type="ButtonTypeEnum.Solid">Подробнее ||></UiButton>
             </div>
         </div>
-    </template>
+    </div>
+</template>
 
 <style lang="scss" scoped>
 .cardBody {
@@ -38,9 +38,9 @@ const props = defineProps({
     justify-content: space-between;
     padding: 20px;
     border: solid;
-    border-width: 2px;
+    border-width: 1px;
+    border-style: dashed;
     border-color: gray;
-    margin: 0.5% 0 1% 0;
     background-color: white;
     width: 280px;
     max-height: 250rem;
@@ -98,6 +98,7 @@ const props = defineProps({
 
 .cardHeader {
     //background-color: white;
+    user-select: none;
     height: 50%;
 }
 </style>

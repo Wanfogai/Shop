@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref } from 'vue';
-import { Container, Logo, Input, UiButton, ButtonTypeEnum } from '@/components';
+import { Container, Logo, Input, UiButton, ButtonTypeEnum, IconTypeEnum } from '@/components';
 
 
 //Параметры
@@ -9,7 +9,7 @@ import { Container, Logo, Input, UiButton, ButtonTypeEnum } from '@/components';
 <template>
     <div class="header">
         <Container class="header_container">
-            <Logo type="search">
+            <Logo :type=IconTypeEnum.Search>
                 <h1>Core</h1>.io
             </Logo>
             <Input class="search"></Input>
@@ -23,6 +23,12 @@ import { Container, Logo, Input, UiButton, ButtonTypeEnum } from '@/components';
 </template>
 
 <style lang="scss" scoped>
+@media(max-width:940px) {
+    .buttonContainer {
+        display: none;
+    }
+}
+
 .header {
     padding: 5px auto;
     height: 80px;

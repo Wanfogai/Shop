@@ -54,6 +54,7 @@ const buttonStyle = computed(() => ({
 }
 
 .solid {
+    user-select: none;
     border: none;
     border-radius: 2px;
     padding: 3px;

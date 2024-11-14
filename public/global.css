@@ -1,5 +1,11 @@
-*{
+* {
     font-family: "Montserrat", sans-serif;
-        font-optical-sizing: auto;
-        font-style: normal;
+    font-optical-sizing: auto;
+    font-style: normal;
+
+
+}
+
+img {
+    pointer-events: none;
 }

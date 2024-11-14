@@ -15,7 +15,6 @@ import { Methods } from "./methods"
 //                 Price: 22,
 
 interface Offer {
-    id: number,
     image: string,
 }
 
@@ -43,12 +42,12 @@ const useStore = () => {
 
     const offers = ref<Offer[]>([
         {
-            id: 0,
             image: "https://cdn.shopify.com/s/files/1/0070/7032/articles/discounts-coupons-offers-types_bea872d4-92b4-4606-8e38-0c8b95ee7ebd.jpg?v=1729518205&originalWidth=1848&originalHeight=782&width=1800"
         },
         {
-            id: 1,
             image: "https://cdn.shopify.com/s/files/1/0016/3866/2201/files/Discount-Coupons-on-Online-Shopping_1024x1024.jpg?v=1667489054"
+        }, {
+            image: "https://cdn.shopify.com/s/files/1/0070/7032/articles/discounts-coupons-offers-types_bea872d4-92b4-4606-8e38-0c8b95ee7ebd.jpg?v=1729518205&originalWidth=1848&originalHeight=782&width=1800"
         }
     ])
     return { products, offers }
