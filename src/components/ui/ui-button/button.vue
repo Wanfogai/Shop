@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { computed, onBeforeUnmount, onMounted, PropType, ref } from 'vue';
 import { ButtonTypeEnum } from './enums';
+import Dragable from '../dragable.vue';
 //Параметры
 const props = defineProps({
     //Тип кнопки (простая кнопка или текстовая)
@@ -24,7 +25,7 @@ const emit = defineEmits<{
 /**При клике */
 const onClick = (event: MouseEvent) => {
     emit('click', event)
-    props.type == ButtonTypeEnum.Solid
+    console.log(props.type == ButtonTypeEnum.Solid);
 }
 
 /**Изменяемый стиль для кнопки*/
@@ -40,12 +41,12 @@ const buttonStyle = computed(() => ({
 </script>
 
 <template>
-    <button v-if="type === ButtonTypeEnum.Solid" :class="props.type" :style="buttonStyle" @click="onClick">
-        <slot>{{ props.text }}</slot>
-    </button>
-    <span v-else-if="type === ButtonTypeEnum.Text" :class="props.type" @click="onClick">
-        <slot></slot>
-    </span>
+        <button v-if="type === ButtonTypeEnum.Solid" :class="props.type" :style="buttonStyle" @click="onClick">
+            <slot>{{ props.text }}</slot>
+        </button>
+        <span v-else-if="type === ButtonTypeEnum.Text" :class="props.type" @click="onClick">
+            <slot></slot>
+        </span>
 </template>
 
 <style lang="scss" scoped>

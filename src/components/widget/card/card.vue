@@ -1,15 +1,18 @@
 <script lang="ts" setup>
 import { PropType } from 'vue';
-import { IconTypeEnum, UiIcon, ButtonTypeEnum, UiButton } from '@/components';
+import { IconTypeEnum, UiIcon, ButtonTypeEnum, UiButton, Dragable } from '@/components';
 import { CardModel } from './models/CardModel';
+import { Methods } from '@/app/store/methods';
 
 const props = defineProps({
     card: { type: Object as PropType<CardModel>, default: () => new CardModel() }
 })
 
+const onClock = () => { Methods.AlertMessage("Hello Worlld") }
+
 </script>
 <template>
-    <div class="cardBody">
+    <div class="card_wraper">
         <div class="cardHeader"><img :src="card.Image" class="itemImg">
         </div>
         <div class="cardCenter">
@@ -25,14 +28,15 @@ const props = defineProps({
 
             <div class="cardFooter">
                 <span>{{ card.Price }} $</span>
-                <UiButton :type="ButtonTypeEnum.Solid">Подробнее ||></UiButton>
+                <UiButton :type="ButtonTypeEnum.Solid" :onclick="onClock">Подробнее ||></UiButton>
             </div>
         </div>
     </div>
 </template>
 
 <style lang="scss" scoped>
-.cardBody {
+.card_wraper {
+    user-select: none;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -44,6 +48,10 @@ const props = defineProps({
     background-color: white;
     width: 280px;
     max-height: 250rem;
+}
+
+.empty {
+    background-color: black;
 }
 
 .stars {
@@ -98,7 +106,7 @@ const props = defineProps({
 
 .cardHeader {
     //background-color: white;
-    user-select: none;
+
     height: 50%;
 }
 </style>

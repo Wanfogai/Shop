@@ -18,7 +18,7 @@ interface Offer {
     image: string,
 }
 
-const curdCount = 20
+const curdCount = 10
 
 let products: CardModel[] = []
 

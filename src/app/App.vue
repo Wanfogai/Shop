@@ -1,7 +1,11 @@
 <script lang="ts" setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue';
-import { Header, Container, Card, Carousel, UiButton, ButtonTypeEnum, UiIcon, IconTypeEnum } from '@/components';
+import { Header, Container, Card, Carousel, UiButton, ButtonTypeEnum, UiIcon, IconTypeEnum, Dragable } from '@/components';
 import { store } from './store/store';
+
+
+
+
 </script>
 
 <template>
@@ -11,10 +15,13 @@ import { store } from './store/store';
 
     </Container>
     <Container class="body">
-        <Card v-for="item in store.products" :card="item" />
+        <Dragable class="drager" v-for="item in store.products">
 
+            <Card :card="item" class="card" />
+        </Dragable>
     </Container>
-    <UiButton :type="ButtonTypeEnum.Text" class="basket" >
+
+    <UiButton :type="ButtonTypeEnum.Text" class="basket">
         <UiIcon :type="IconTypeEnum.Basket"></UiIcon>
     </UiButton>
 </template>
@@ -30,11 +37,20 @@ import { store } from './store/store';
     height: 450px;
 }
 
+.drager {
+    outline: none;
+    user-select: none;
+    z-index: 9999;
+    background-color: black;
+}
+
 .basket {
     position: fixed;
     bottom: 30px;
     right: 30px;
     transition: .3s;
+    z-index: 9999999;
+    transform: scale(0.80);
 }
 
 
