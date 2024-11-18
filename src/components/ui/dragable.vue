@@ -1,12 +1,29 @@
 <script setup lang="ts">
 import { RefSymbol } from '@vue/reactivity';
-import { onMounted, ref } from 'vue';
+import { computed, onMounted, ref } from 'vue';
+
+const donDragClass = computed(() => ({
+    
+}))
 
 const emit = defineEmits<{
     mousedown: [event: MouseEvent],
     mousemove: [event: MouseEvent],
     mouseup: [event: MouseEvent]
 }>()
+
+const dragStart=ref(false)
+
+const onMouseDown = (event:MouseEvent) => {
+    emit('mousedown', event);
+    dragStart.value = true;
+}
+
+const onMouseUp = (event:MouseEvent) =>
+{
+    emit('mouseup', event);
+    dragStart.value = false;
+}
 
 
 const drag_wraper = ref()
@@ -15,7 +32,7 @@ const drag_wraper = ref()
 </script>
 
 <template>
-    <div class="drager" @mousedown="" @mousemove="" @mouseup="" :ref="() => drag_wraper">
+    <div :class="`${dragStart?'drag':''}`" @mousedown="onMouseDown" @mousemove="" @mouseup="onMouseUp" :ref="() => drag_wraper">
         <slot></slot>
     </div>
 </template>
@@ -23,5 +40,8 @@ const drag_wraper = ref()
 <style lang="scss" scoped>
 .drager {
     cursor: pointer;
+    outline: none;
+    user-select: none;
+    z-index: 9999;
 }
 </style>

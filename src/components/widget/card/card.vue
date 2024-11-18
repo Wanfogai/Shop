@@ -37,7 +37,7 @@ const onClock = () => { Methods.AlertMessage("Hello Worlld") }
 <style lang="scss" scoped>
 .card_wraper {
     user-select: none;
-    display: flex;
+    
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
@@ -47,11 +47,11 @@ const onClock = () => { Methods.AlertMessage("Hello Worlld") }
     border-color: gray;
     background-color: white;
     width: 280px;
-    max-height: 250rem;
+    min-height: 530px;
 }
 
-.empty {
-    background-color: black;
+.empty{
+    background-color: gray;
 }
 
 .stars {

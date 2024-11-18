@@ -17,7 +17,7 @@ import { store } from './store/store';
     <Container class="body">
         <Dragable class="drager" v-for="item in store.products">
 
-            <Card :card="item" class="card" />
+            <Card :card="item"/>
         </Dragable>
     </Container>
 
@@ -37,12 +37,7 @@ import { store } from './store/store';
     height: 450px;
 }
 
-.drager {
-    outline: none;
-    user-select: none;
-    z-index: 9999;
-    background-color: black;
-}
+
 
 .basket {
     position: fixed;
