@@ -25,6 +25,7 @@ let products: CardModel[] = []
 //Для генирации рандомных карт ()
 for (let index = 0; index < curdCount; index++) {
     products.push(new CardModel({
+        Id: index,
         Image: "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png",
         Exist: Boolean(Methods.getRandomInt(2)),
         Raiting: Methods.getRandomInt(6),

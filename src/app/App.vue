@@ -17,7 +17,7 @@ import { store } from './store/store';
     <Container class="body">
         <Dragable class="drager" v-for="item in store.products">
 
-            <Card :card="item"/>
+            <Card :card="item" :empty="dragStart" />
         </Dragable>
     </Container>
 
@@ -36,6 +36,12 @@ import { store } from './store/store';
     background-color: black;
     height: 450px;
 }
+
+.drag {
+    z-index: 9999999;
+}
+
+
 
 
 

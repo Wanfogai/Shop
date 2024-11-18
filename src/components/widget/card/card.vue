@@ -1,21 +1,22 @@
 <script lang="ts" setup>
-import { PropType } from 'vue';
+import { getCurrentInstance, PropType } from 'vue';
 import { IconTypeEnum, UiIcon, ButtonTypeEnum, UiButton, Dragable } from '@/components';
 import { CardModel } from './models/CardModel';
 import { Methods } from '@/app/store/methods';
 
 const props = defineProps({
-    card: { type: Object as PropType<CardModel>, default: () => new CardModel() }
+    card: { type: Object as PropType<CardModel>, default: () => new CardModel() },
+    empty: { type: Boolean, default: false }
 })
 
 const onClock = () => { Methods.AlertMessage("Hello Worlld") }
 
 </script>
 <template>
-    <div class="card_wraper">
-        <div class="cardHeader"><img :src="card.Image" class="itemImg">
+    <div :class="`card_wraper ${props.empty ? 'empty' : ''}`">
+        <div v-if="!props.empty" class="cardHeader"><img :src="card.Image" class="itemImg">
         </div>
-        <div class="cardCenter">
+        <div v-if="!props.empty" class="cardCenter">
             <div class="stars">
                 <UiIcon v-for="(index) in 5"
                     :type='index <= card.Raiting ? IconTypeEnum.FullStar : IconTypeEnum.EmptyStar'></UiIcon>
@@ -37,7 +38,6 @@ const onClock = () => { Methods.AlertMessage("Hello Worlld") }
 <style lang="scss" scoped>
 .card_wraper {
     user-select: none;
-    
     flex-direction: column;
     justify-content: space-between;
     padding: 20px;
@@ -50,7 +50,7 @@ const onClock = () => { Methods.AlertMessage("Hello Worlld") }
     min-height: 530px;
 }
 
-.empty{
+.empty {
     background-color: gray;
 }
 

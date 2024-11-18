@@ -10,7 +10,7 @@ export class CardModel {
         if (obj) Object.assign(this, obj)
     }
 
-
+    Id:Number
     Desc?: string
     Image?: string
     Exist?: boolean

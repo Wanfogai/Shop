@@ -1,10 +1,12 @@
 <script setup lang="ts">
-import { RefSymbol } from '@vue/reactivity';
-import { computed, onMounted, ref } from 'vue';
+import { getCurrentScope, RefSymbol } from '@vue/reactivity';
+import { computed, getCurrentInstance, onMounted, ref } from 'vue';
 
-const donDragClass = computed(() => ({
-    
-}))
+
+const $dragWraper = ref<HTMLDivElement>()
+const cloneEl = ref<HTMLDivElement>()
+
+const isDrag = computed(() => !!cloneEl.value)
 
 const emit = defineEmits<{
     mousedown: [event: MouseEvent],
@@ -12,28 +14,37 @@ const emit = defineEmits<{
     mouseup: [event: MouseEvent]
 }>()
 
-const dragStart=ref(false)
-
-const onMouseDown = (event:MouseEvent) => {
-    emit('mousedown', event);
-    dragStart.value = true;
+const onMouseDragDowm = (event: MouseEvent) => {
+    if (!$dragWraper.value) return
+    emit("mousedown", event)
+    const el = document.createElement('div')
+    el.innerHTML = $dragWraper.value.innerHTML
+    el.classList.add('dragging')
+    cloneEl.value = el
+    document.body.appendChild(cloneEl.value)
+    document.addEventListener('mouseup', onMouseDargUp)
+    document.addEventListener('mousemove', onMouseDragMove)
 }
 
-const onMouseUp = (event:MouseEvent) =>
-{
-    emit('mouseup', event);
-    dragStart.value = false;
+const onMouseDargUp = (event: MouseEvent) => {
+    cloneEl.value?.remove()
+    emit("mouseup", event)
+    document.removeEventListener('mouseup', onMouseDargUp)
+    document.removeEventListener('mousemove', onMouseDragMove)
 }
 
-
-const drag_wraper = ref()
-
+const onMouseDragMove = (event: MouseEvent) => {
+    emit("mousemove", event)
+    if (!cloneEl.value) return
+    cloneEl.value.style.left = `${event.x - 200}px`
+    cloneEl.value.style.top = `${event.y}px`
+}
 
 </script>
 
 <template>
-    <div :class="`${dragStart?'drag':''}`" @mousedown="onMouseDown" @mousemove="" @mouseup="onMouseUp" :ref="() => drag_wraper">
-        <slot></slot>
+    <div ref="$dragWraper" @mousedown="onMouseDragDowm">
+        <slot />
     </div>
 </template>
 
@@ -43,5 +54,11 @@ const drag_wraper = ref()
     outline: none;
     user-select: none;
     z-index: 9999;
+}
+</style>
+<style lang="scss">
+.dragging {
+    position: fixed;
+    z-index: 100000;
 }
 </style>
