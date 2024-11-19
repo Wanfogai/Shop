@@ -2,10 +2,21 @@
 import { onBeforeUnmount, onMounted, ref } from 'vue';
 import { Header, Container, Card, Carousel, UiButton, ButtonTypeEnum, UiIcon, IconTypeEnum, Dragable } from '@/components';
 import { store } from './store/store';
+import { CardModel } from '@/components/widget/card/models/CardModel';
 
+/**Текущий перетаскиваемый элемент */
+const currentDragging = ref<CardModel>()
 
-
-
+/**Переключение перетаскиваемого элемента */
+const cardOnDrag = (isDrag: boolean, item: CardModel) => {
+    currentDragging.value = isDrag ? item : undefined
+}
+/**Сброс элемента в корзину */
+const onBasketDrop = () => {
+    if (currentDragging.value) {
+        console.log(currentDragging.value)
+    }
+}
 </script>
 
 <template>
@@ -15,15 +26,17 @@ import { store } from './store/store';
 
     </Container>
     <Container class="body">
-        <Dragable class="drager" v-for="item in store.products">
-
-            <Card :card="item" :empty="dragStart" />
+        <Dragable class="drager" v-for="item in store.products" @drag="cardOnDrag($event, item)">
+            <Card :card="item" />
         </Dragable>
     </Container>
 
-    <UiButton :type="ButtonTypeEnum.Text" class="basket">
-        <UiIcon :type="IconTypeEnum.Basket"></UiIcon>
-    </UiButton>
+    <Dragable @drop="onBasketDrop">
+        <UiButton :type="ButtonTypeEnum.Text" class="basket drager">
+            <UiIcon :type="IconTypeEnum.Basket"></UiIcon>
+        </UiButton>
+    </Dragable>
+
 </template>
 
 <style lang="scss" scoped>

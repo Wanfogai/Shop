@@ -3,6 +3,10 @@ import { PropType } from 'vue';
 import { IconTypeEnum } from './enums';
 
 
+const emit = defineEmits<{
+    
+}>()
+
 
 const props = defineProps({
     type: { type: String as PropType<IconTypeEnum> }

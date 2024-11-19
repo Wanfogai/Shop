@@ -6,17 +6,16 @@ import { Methods } from '@/app/store/methods';
 
 const props = defineProps({
     card: { type: Object as PropType<CardModel>, default: () => new CardModel() },
-    empty: { type: Boolean, default: false }
 })
 
 const onClock = () => { Methods.AlertMessage("Hello Worlld") }
 
 </script>
 <template>
-    <div :class="`card_wraper ${props.empty ? 'empty' : ''}`">
-        <div v-if="!props.empty" class="cardHeader"><img :src="card.Image" class="itemImg">
+    <div class="card_wraper">
+        <div  class="cardHeader"><img :src="card.Image" class="itemImg">
         </div>
-        <div v-if="!props.empty" class="cardCenter">
+        <div class="cardCenter">
             <div class="stars">
                 <UiIcon v-for="(index) in 5"
                     :type='index <= card.Raiting ? IconTypeEnum.FullStar : IconTypeEnum.EmptyStar'></UiIcon>
