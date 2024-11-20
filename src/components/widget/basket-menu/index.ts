@@ -1,0 +1,1 @@
+export { default as BasketMenu } from "./basket-menu.vue"

@@ -1,0 +1,1 @@
+export { default as BasketItem } from "./basketItem.vue"

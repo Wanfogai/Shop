@@ -3,7 +3,7 @@ import { store } from '@/app/store';
 import { UiButton, ButtonTypeEnum } from '@/components';
 import { computed, onBeforeMount, onBeforeUnmount, ref } from 'vue';
 
-//Номер изображения
+/**Номер изображения*/
 const currentImage = ref(0);
 
 
@@ -19,7 +19,7 @@ const { imageCount } = props
 /**Интервал переключения */
 const toggleInterval = ref()
 
-
+/**Размер прокрутки */
 const corouselStyle = computed(() => ({
     marginLeft: -currentImage.value * 100 + "%"
 }))

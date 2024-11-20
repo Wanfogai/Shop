@@ -1,11 +1,14 @@
 <script lang="ts" setup>
 import { onBeforeUnmount, onMounted, ref } from 'vue';
-import { Header, Container, Card, Carousel, UiButton, ButtonTypeEnum, UiIcon, IconTypeEnum, Dragable } from '@/components';
+import { Header, BasketMenu, Container, Card, Carousel, UiButton, ButtonTypeEnum, UiIcon, IconTypeEnum, Dragable } from '@/components';
 import { store } from './store/store';
 import { CardModel } from '@/components/widget/card/models/CardModel';
+import { BasketItemModel } from '@/components/ui/basket-item/models/BasketItemModel';
 
 /**Текущий перетаскиваемый элемент */
 const currentDragging = ref<CardModel>()
+
+const onBasketClick = () => store.basketMenuActive = !store.basketMenuActive
 
 /**Переключение перетаскиваемого элемента */
 const cardOnDrag = (isDrag: boolean, item: CardModel) => {
@@ -14,7 +17,12 @@ const cardOnDrag = (isDrag: boolean, item: CardModel) => {
 /**Сброс элемента в корзину */
 const onBasketDrop = () => {
     if (currentDragging.value) {
-        console.log(currentDragging.value)
+        store.basketProducts?.push(new BasketItemModel({
+            Type: "ПК",
+            Price: currentDragging.value.Price,
+            Name: "RX580"
+        }))
+        console.log(store.basketProducts?.values)
     }
 }
 </script>
@@ -31,12 +39,14 @@ const onBasketDrop = () => {
         </Dragable>
     </Container>
 
-    <Dragable @drop="onBasketDrop">
-        <UiButton :type="ButtonTypeEnum.Text" class="basket drager">
-            <UiIcon :type="IconTypeEnum.Basket"></UiIcon>
+    <Dragable @drop="onBasketDrop" :can-drag="false">
+        <UiButton :type="ButtonTypeEnum.Text" class="basket" @click="onBasketClick">
+            <UiIcon :type="IconTypeEnum.Basket" />
         </UiButton>
     </Dragable>
+    <BasketMenu>
 
+    </BasketMenu>
 </template>
 
 <style lang="scss" scoped>
@@ -54,10 +64,6 @@ const onBasketDrop = () => {
     z-index: 9999999;
 }
 
-
-
-
-
 .basket {
     position: fixed;
     bottom: 30px;
@@ -66,7 +72,6 @@ const onBasketDrop = () => {
     z-index: 9999999;
     transform: scale(0.80);
 }
-
 
 .body {
     display: flex;

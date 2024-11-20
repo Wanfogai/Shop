@@ -2,9 +2,8 @@
 import { computed, onBeforeUnmount, onMounted, PropType, ref } from 'vue';
 import { ButtonTypeEnum } from './enums';
 import Dragable from '../dragable.vue';
-//Параметры
+
 const props = defineProps({
-    //Тип кнопки (простая кнопка или текстовая)
     type: { type: String as PropType<ButtonTypeEnum> },
     text: { type: String, default: '' },
     width: { type: String, default: '' },
@@ -13,8 +12,6 @@ const props = defineProps({
     fontWeight: { type: String, default: '' },
     opacity: { type: String, default: '' },
 })
-
-
 
 /**События */
 const emit = defineEmits<{
