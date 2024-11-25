@@ -22,7 +22,6 @@ const emit = defineEmits<{
 /**При клике */
 const onClick = (event: MouseEvent) => {
     emit('click', event)
-    console.log(props.type == ButtonTypeEnum.Solid);
 }
 
 /**Изменяемый стиль для кнопки*/

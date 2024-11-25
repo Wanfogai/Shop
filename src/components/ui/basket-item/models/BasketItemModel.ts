@@ -4,6 +4,6 @@ export class BasketItemModel {
     }
     Type?: string
     Name: string
-    Price: Number
+    Price: number
 
 }

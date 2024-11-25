@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { store } from '@/app/store';
 import { BasketItem } from '@/components/ui';
+import { BasketItemModel } from '@/components/ui/basket-item/models/BasketItemModel';
 import { ref, stop } from 'vue';
 
 /**Закрытие корзины при нажатии на пустое пространство */
 const closeBasket = () => store.basketMenuActive = !store.basketMenuActive
-
 
 </script>
 <template>
@@ -13,8 +13,9 @@ const closeBasket = () => store.basketMenuActive = !store.basketMenuActive
         <div class="itemList">
             <span class="menuHeader">Корзина</span>
             <div class="menuBody">
-                <BasketItem v-for="item in store.basketProducts" :item="item"></BasketItem>
+                <BasketItem v-for="item in store.basketProducts" :item="item"/>
             </div>
+            <div class="totalPrice">Итого:{{store.totalPrice}}</div>
         </div>
     </div>
 </template>
@@ -37,6 +38,7 @@ const closeBasket = () => store.basketMenuActive = !store.basketMenuActive
     border-bottom: 5px solid black;
     width: 100%;
     height: 5%;
+    padding-bottom: 5%;
     font-size: 40px;
     display: flex;
     justify-content: center;

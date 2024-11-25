@@ -37,14 +37,16 @@ const useStore = () => {
 
     const basketMenuActive = ref(false)
 
-    const basketProducts = ref<BasketItemModel[]>()
+    const totalPrice = ref(0)
+
+    const basketProducts = ref<BasketItemModel[]>([])
 
     const offers = ref<Offer[]>([
         { image: "https://cdn.shopify.com/s/files/1/0070/7032/articles/discounts-coupons-offers-types_bea872d4-92b4-4606-8e38-0c8b95ee7ebd.jpg?v=1729518205&originalWidth=1848&originalHeight=782&width=1800" },
         { image: "https://cdn.shopify.com/s/files/1/0016/3866/2201/files/Discount-Coupons-on-Online-Shopping_1024x1024.jpg?v=1667489054" },
         { image: "https://cdn.shopify.com/s/files/1/0070/7032/articles/discounts-coupons-offers-types_bea872d4-92b4-4606-8e38-0c8b95ee7ebd.jpg?v=1729518205&originalWidth=1848&originalHeight=782&width=1800" }
     ])
-    return { products, offers, basketMenuActive, basketProducts }
+    return { products, offers, basketMenuActive,basketProducts,totalPrice }
 }
 
 const store = reactive(useStore())

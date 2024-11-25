@@ -6,5 +6,5 @@ export class CardModel {
     Image?: string
     Exist?: boolean
     Raiting: number
-    Price?: number
+    Price: number
 }

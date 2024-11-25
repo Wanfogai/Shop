@@ -17,12 +17,15 @@ const cardOnDrag = (isDrag: boolean, item: CardModel) => {
 /**Сброс элемента в корзину */
 const onBasketDrop = () => {
     if (currentDragging.value) {
-        store.basketProducts?.push(new BasketItemModel({
-            Type: "ПК",
-            Price: currentDragging.value.Price,
-            Name: "RX580"
-        }))
-        console.log(store.basketProducts?.values)
+        if (!currentDragging.value.Exist) alert("Данного товара нет в наличии")
+        else {
+            store.totalPrice += currentDragging.value.Price
+            store.basketProducts.push(new BasketItemModel({
+                Type: "ПК",
+                Price: currentDragging.value.Price,
+                Name: "RX580"
+            }))
+        }
     }
 }
 </script>
@@ -44,7 +47,7 @@ const onBasketDrop = () => {
             <UiIcon :type="IconTypeEnum.Basket" />
         </UiButton>
     </Dragable>
-    <BasketMenu>
+    <BasketMenu >
 
     </BasketMenu>
 </template>
