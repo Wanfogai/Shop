@@ -25,7 +25,7 @@ for (let index = 0; index < curdCount; index++) {
         Image: "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png",
         Exist: Boolean(Methods.getRandomInt(2)),
         Raiting: Methods.getRandomInt(6),
-        Price: Methods.getRandomInt(50000),
+        Price: Methods.getRandomInt(1000),
         Desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit aliquid omnis placeat labore tempore nostrum eum dicta? Porro voluptatum expedita hic quisquam possimus. Necessitatibus error reprehenderit, quia eos facere deserunt."
     }))
 

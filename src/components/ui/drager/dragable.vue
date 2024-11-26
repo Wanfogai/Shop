@@ -23,7 +23,7 @@ const props = defineProps({
 const offsetX = ref()
 const offsetY = ref()
 
-//Проверка идет ли перетаскивание
+/**Проверка идет ли перетаскивание*/
 const isDrag = computed(() => {
     emit('drag', !!cloneEl.value)
     return !!cloneEl.value

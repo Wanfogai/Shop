@@ -54,12 +54,8 @@ const onBasketDrop = () => {
 
 <style lang="scss" scoped>
 .Offers {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: solid gray;
-    border-width: 1;
-    background-color: black;
+    border: solid black;
+    border-width: 0.3px;
     height: 450px;
 }
 

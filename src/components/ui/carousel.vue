@@ -7,11 +7,8 @@ import { computed, onBeforeMount, onBeforeUnmount, ref } from 'vue';
 const currentImage = ref(0);
 
 
-
 const props = defineProps({
     imageCount: { type: Number, default: 2 },
-    width: { type: String, default: "120em" },
-    height: { type: String, default: "70em" }
 })
 
 const { imageCount } = props
@@ -24,10 +21,7 @@ const corouselStyle = computed(() => ({
     marginLeft: -currentImage.value * 100 + "%"
 }))
 
-const imageStyle = computed(() => ({
-    width: props.width,
-    height: props.height
-}))
+
 
 /**После рендера */
 onBeforeMount(() => {
@@ -46,9 +40,9 @@ onBeforeUnmount(() => {
 
 </script>
 <template>
-    <div class="wraper">
-        <div class="carousel" :style="corouselStyle">
-            <img v-for="item, index in store.offers" :src="item.image" :alt="index.toString()" :style="imageStyle">
+    <div class="wraper" >
+        <div  class="carousel" :style="corouselStyle" >
+            <img v-for="item, index in store.offers" :src="item.image" :alt="index.toString()" >
         </div>
     </div>
 </template>
@@ -57,23 +51,17 @@ onBeforeUnmount(() => {
 
 <style lang="scss" scoped>
 .carousel img {
-    width: 110.75em;
-    height: 70em;
+    width: 100%;
+    height: 100%;
 }
 
 .wraper .carousel {
-    display: flex;
-    justify-content: space-between;
     transition: 2s;
-    width: 100%;
-
+    display: ruby-text;
 }
 
-
 .wraper {
-    user-select: none;
-    overflow: hidden;
-    width: 100%;
+    overflow:hidden;
     height: 100%;
 }
 </style>

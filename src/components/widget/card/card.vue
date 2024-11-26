@@ -7,8 +7,8 @@ import { Methods } from '@/app/store/methods';
 const props = defineProps({
     card: { type: Object as PropType<CardModel>, default: () => new CardModel() },
 })
-
-const onClock = () => { Methods.AlertMessage("Hello Worlld") }
+/**Действие при клике на кнопку карты */
+const onClick = () => { Methods.AlertMessage("Hello Worlld") }
 
 </script>
 <template>
@@ -28,7 +28,7 @@ const onClock = () => { Methods.AlertMessage("Hello Worlld") }
 
             <div class="cardFooter">
                 <span>{{ card.Price }} $</span>
-                <UiButton :type="ButtonTypeEnum.Solid" :onclick="onClock">Подробнее ||></UiButton>
+                <UiButton :type="ButtonTypeEnum.Solid" :onclick="onClick">Подробнее ||></UiButton>
             </div>
         </div>
     </div>

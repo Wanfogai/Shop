@@ -4,6 +4,8 @@ import { PropType, ref } from 'vue';
 import { BasketItemModel } from './models/BasketItemModel';
 import { store } from '@/app/store';
 
+
+/**Контейнер хранящий объекты товаров */
 const $itemContainer=ref<HTMLDivElement>()
 
 const onClick = (item?: BasketItemModel) => {
@@ -21,7 +23,7 @@ const props = defineProps({
     <div class="itemContainer"  ref="$itemContainer">
         <span>{{ props.item?.Type }}</span>
         <span>{{ props.item?.Name }}</span>
-        <span>{{ props.item?.Price }}$</span>
+        <span class="itemPrice">{{ props.item?.Price }}$</span>
         <UiButton :type="ButtonTypeEnum.Solid" @click="onClick(props.item)">Отмена</UiButton>
     </div>
 </template>
@@ -33,5 +35,9 @@ const props = defineProps({
     justify-content: space-between;
     background-color: gray;
     align-items: center;
+}
+
+.itemPrice{
+    color: red;
 }
 </style>
