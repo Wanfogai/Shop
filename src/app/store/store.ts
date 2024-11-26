@@ -4,20 +4,17 @@ import { computed, reactive, ref } from "vue"
 import { Methods } from "./methods"
 import { BasketItemModel } from "@/components/ui/basket-item/models/BasketItemModel"
 
-//Верменно начало
 
+
+//Верменно начало
 interface Offer {
     image: string,
 }
 
-const curdCount = 20
-
 let products: CardModel[] = []
 
-
-
 //Для генирации рандомных карт ()
-for (let index = 0; index < curdCount; index++) {
+for (let index = 0; index < 20; index++) {
     products.push(new CardModel({
         Name: Methods.getRandomString(["RX580", "RTX404090", "I53200M", "Буженина"]),
         Type: Methods.getRandomString(["ПК", "Процессор", "Видеокарта", "Мясо"]),
@@ -29,7 +26,6 @@ for (let index = 0; index < curdCount; index++) {
     }))
 
 }
-
 //Временно Конец
 
 const useStore = () => {
