@@ -6,10 +6,10 @@ import { store } from '@/app/store';
 
 
 /**Контейнер хранящий объекты товаров */
-const $itemContainer=ref<HTMLDivElement>()
+const $itemContainer = ref<HTMLDivElement>()
 
 const onClick = (item?: BasketItemModel) => {
-    if(!item?.Price) return
+    if (!item?.Price) return
     store.totalPrice -= item.Price;
     store.basketProducts = store.basketProducts.filter((el) => el != item);
 }
@@ -20,7 +20,7 @@ const props = defineProps({
 
 </script>
 <template>
-    <div class="itemContainer"  ref="$itemContainer">
+    <div class="itemContainer" ref="$itemContainer">
         <span>{{ props.item?.Type }}</span>
         <span>{{ props.item?.Name }}</span>
         <span class="itemPrice">{{ props.item?.Price }}$</span>
@@ -28,16 +28,17 @@ const props = defineProps({
     </div>
 </template>
 <style lang="scss" scoped>
-.itemContainer{
+.itemContainer {
     display: flex;
     width: 100;
     border: solid 2px black;
+    border-radius: 7px;
     justify-content: space-between;
-    background-color: gray;
+    background-color: white;
     align-items: center;
 }
 
-.itemPrice{
+.itemPrice {
     color: red;
 }
 </style>

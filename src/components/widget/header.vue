@@ -1,9 +1,7 @@
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { ref, defineModel, ModelRef } from 'vue';
 import { Container, Logo, Input, UiButton, ButtonTypeEnum, IconTypeEnum } from '@/components';
 
-
-//Параметры
 
 </script>
 <template>

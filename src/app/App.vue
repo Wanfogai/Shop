@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { onBeforeUnmount, onMounted, ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, reactive, ref } from 'vue';
 import { Header, BasketMenu, Container, Card, Carousel, UiButton, ButtonTypeEnum, UiIcon, IconTypeEnum, Dragable } from '@/components';
 import { store } from './store/store';
 import { CardModel } from '@/components/widget/card/models/CardModel';
@@ -9,6 +9,12 @@ import { BasketItemModel } from '@/components/ui/basket-item/models/BasketItemMo
 const currentDragging = ref<CardModel>()
 
 const onBasketClick = () => store.basketMenuActive = !store.basketMenuActive
+
+
+/**Реизация поиска(элеметы фильтрующиеся по ключевым словам)*/
+const items = computed(() => {
+    return store.products.filter((el) => el.Name?.toLowerCase().trim().includes(store.searchString.toLowerCase().trim()))
+})
 
 /**Переключение перетаскиваемого элемента */
 const cardOnDrag = (isDrag: boolean, item: CardModel) => {
@@ -21,9 +27,9 @@ const onBasketDrop = () => {
         else {
             store.totalPrice += currentDragging.value.Price
             store.basketProducts.push(new BasketItemModel({
-                Type: "ПК",
+                Type: currentDragging.value.Type,
                 Price: currentDragging.value.Price,
-                Name: "RX580"
+                Name: currentDragging.value.Name
             }))
         }
     }
@@ -34,10 +40,9 @@ const onBasketDrop = () => {
     <Header />
     <Container class="Offers">
         <Carousel :image-count="3" />
-
     </Container>
     <Container class="body">
-        <Dragable class="drager" v-for="item in store.products" @drag="cardOnDrag($event, item)">
+        <Dragable v-for="item in items" @drag="cardOnDrag($event, item)">
             <Card :card="item" />
         </Dragable>
     </Container>
@@ -47,7 +52,7 @@ const onBasketDrop = () => {
             <UiIcon :type="IconTypeEnum.Basket" />
         </UiButton>
     </Dragable>
-    <BasketMenu >
+    <BasketMenu>
 
     </BasketMenu>
 </template>
@@ -79,5 +84,6 @@ const onBasketDrop = () => {
     align-items: center;
     margin: 30px auto;
     height: 100%;
+
 }
 </style>

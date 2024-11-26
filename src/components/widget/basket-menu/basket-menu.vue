@@ -9,41 +9,40 @@ const closeBasket = () => store.basketMenuActive = !store.basketMenuActive
 
 </script>
 <template>
-    
+
     <div v-if="store.basketMenuActive" class="background" @:click="closeBasket">
-        
+
     </div>
     <div v-if="store.basketMenuActive" class="itemList">
-            <span class="menuHeader">Корзина</span>
-            <div class="menuBody" >
-                <BasketItem v-for="item in store.basketProducts" :item="item" class="basketItem"/>
-            </div>
-            <div class="totalPrice">
-                Итого:
-                <span>{{store.totalPrice}}$</span>
-            </div>
+        <span class="menuHeader">Корзина</span>
+        <div class="menuBody">
+            <BasketItem v-for="item in store.basketProducts" :item="item" class="basketItem" />
         </div>
+        <div class="totalPrice">
+            Итого:
+            <span>{{ store.totalPrice }}$</span>
+        </div>
+    </div>
 </template>
 <style lang="scss" scoped>
 .itemList {
- position: fixed;
-    top:12%;
+    position: fixed;
+    top: 12%;
     left: 23%;
     background-color: white;
     width: 50%;
     height: 70%;
     border-radius: 10px;
     z-index: 99999999;
-    border-style: groove;
-    border-color: cadetblue;
+    border: solid 2px black;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     padding: 20px;
 }
 
-.totalPrice span{
-    color:red;
+.totalPrice span {
+    color: red;
 }
 
 .menuHeader {
@@ -56,12 +55,16 @@ const closeBasket = () => store.basketMenuActive = !store.basketMenuActive
     justify-content: center;
 }
 
+.menuBody::-webkit-scrollbar {
+    width: 0;
+}
+
 .menuBody {
     overflow-y: scroll;
 
 }
 
-.basketItem{
+.basketItem {
     padding: 10px;
     margin-top: 5px;
 }

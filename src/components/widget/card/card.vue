@@ -13,7 +13,7 @@ const onClick = () => { Methods.AlertMessage("Hello Worlld") }
 </script>
 <template>
     <div class="card_wraper">
-        <div  class="cardHeader"><img :src="card.Image" class="itemImg">
+        <div class="cardHeader"><img :src="card.Image" class="itemImg"><span class="name">{{ props.card.Name }}</span>
         </div>
         <div class="cardCenter">
             <div class="stars">
@@ -51,6 +51,10 @@ const onClick = () => { Methods.AlertMessage("Hello Worlld") }
 
 .empty {
     background-color: gray;
+}
+
+.name {
+    font-weight: 550;
 }
 
 .stars {

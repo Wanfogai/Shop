@@ -1,9 +1,12 @@
 <script lang="ts" setup>
+import { store } from '@/app/store';
 import { UiIcon, UiButton, ButtonTypeEnum, IconTypeEnum } from '@/components';
+import { ref, defineModel } from 'vue';
+
 </script>
 <template>
     <div class="inputContaier">
-        <input type="search">
+        <input type="search" v-model="store.searchString">
         <UiButton :type="ButtonTypeEnum.Text">
             <UiIcon :type="IconTypeEnum.Search"></UiIcon>
         </UiButton>
