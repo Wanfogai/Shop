@@ -3,6 +3,7 @@ import { CardModel } from "@/components/widget/card/models/CardModel"
 import { computed, reactive, ref } from "vue"
 import { Methods } from "./methods"
 import { BasketItemModel } from "@/components/ui/basket-item/models/BasketItemModel"
+import { CardFiler } from "./trash"
 
 
 
@@ -15,10 +16,15 @@ let products: CardModel[] = []
 
 //Для генирации рандомных карт ()
 for (let index = 0; index < 20; index++) {
+    const currentCard = Methods.getRandomObject([new CardFiler(require("@/app/assets/images/PC.webp"), "ПК", "Ультра игровой ПК"),
+    new CardFiler(require("@/app/assets/images/Processor.webp"), "Процессор", "I53210M"),
+    new CardFiler(require("@/app/assets/images/VideoCard.webp"), "Видеокарта", "RTX404090"),
+    new CardFiler(require("@/app/assets/images/goviadina.png"), "Мясо", "Говядина")
+    ])
     products.push(new CardModel({
-        Name: Methods.getRandomString(["RX580", "RTX404090", "I53200M", "Буженина"]),
-        Type: Methods.getRandomString(["ПК", "Процессор", "Видеокарта", "Мясо"]),
-        Image: "https://content.ibuypower.com/Images/Components/27650/gaming-pc-01-Slate8Mesh-main-2400-solo.png",
+        Name: (<CardFiler>currentCard).Name,
+        Type: (<CardFiler>currentCard).Type,
+        Image: (<CardFiler>currentCard).Image.toString(),
         Exist: Boolean(Methods.getRandomInt(2)),
         Raiting: Methods.getRandomInt(6),
         Price: Methods.getRandomInt(1000),

@@ -112,11 +112,13 @@ const onMouseDragMove = (event: MouseEvent) => {
 }
 </script>
 
+
 <template>
-    <div ref="$dragWraper" @mousedown="onMouseDragDowm" @mouseup="emit('drop')">
+    <div ref="$dragWraper" class="drager" @mousedown="onMouseDragDowm" @mouseup="emit('drop')">
         <slot v-if="!isDrag" />
     </div>
 </template>
+
 
 <style lang="scss" scoped>
 .empty {

@@ -7,6 +7,10 @@ export class Methods {
         return strings[this.getRandomInt(strings.length)]
     }
 
+    static getRandomObject(obj: object[]) {
+        return obj[this.getRandomInt(obj.length)]
+    }
+
     static AlertMessage(message: string) {
         alert(message)
     }

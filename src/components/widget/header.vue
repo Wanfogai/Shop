@@ -7,16 +7,21 @@ import { Container, Logo, Input, UiButton, ButtonTypeEnum, IconTypeEnum } from '
 <template>
     <div class="header">
         <Container class="header_container">
-            <Logo :type=IconTypeEnum.Search>
-                <h1>Core</h1>.io
-            </Logo>
+            <RouterLink to="/" class="rout">
+                <Logo :type=IconTypeEnum.Search>
+                    <h1>Core</h1>.io
+                </Logo>
+            </RouterLink>
             <Input class="search"></Input>
             <div class="buttonContainer">
-                <UiButton :type="ButtonTypeEnum.Text">Корзина</UiButton>
-                <UiButton :type="ButtonTypeEnum.Text">Поддержка</UiButton>
+                <RouterLink to="/about" class="rout">
+                    <UiButton :type="ButtonTypeEnum.Text">Поддержка</UiButton>
+                </RouterLink>
+
                 <UiButton :type="ButtonTypeEnum.Text">О нас</UiButton>
             </div>
         </Container>
+
     </div>
 </template>
 
@@ -35,6 +40,11 @@ import { Container, Logo, Input, UiButton, ButtonTypeEnum, IconTypeEnum } from '
     border-radius: 0 0 5px 5px;
 
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+
+.rout {
+    text-decoration: none;
+    color: black;
 }
 
 .header_container {

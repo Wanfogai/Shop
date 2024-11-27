@@ -13,9 +13,10 @@ const onClick = () => { Methods.AlertMessage("Hello Worlld") }
 </script>
 <template>
     <div class="card_wraper">
-        <div class="cardHeader"><img :src="card.Image" class="itemImg"><span class="name">{{ props.card.Name }}</span>
+        <div class="cardHeader"><img :src="card.Image" class="itemImg">
         </div>
         <div class="cardCenter">
+            <span class="name">{{ props.card.Name }}</span>
             <div class="stars">
                 <UiIcon v-for="(index) in 5"
                     :type='index <= card.Raiting ? IconTypeEnum.FullStar : IconTypeEnum.EmptyStar'></UiIcon>
@@ -37,16 +38,17 @@ const onClick = () => { Methods.AlertMessage("Hello Worlld") }
 <style lang="scss" scoped>
 .card_wraper {
     user-select: none;
-    flex-direction: column;
-    justify-content: space-between;
     padding: 20px;
     border: solid;
+    display: flex;
     border-width: 1px;
     border-style: dashed;
     border-color: gray;
     background-color: white;
     width: 280px;
-    min-height: 530px;
+    min-height: 550px;
+    flex-direction: column;
+    justify-content: space-between;
 }
 
 .empty {
@@ -64,7 +66,6 @@ const onClick = () => { Methods.AlertMessage("Hello Worlld") }
 }
 
 .cardCenter {
-    //background-color: red;
     display: flex;
     flex-direction: column;
     height: auto;
@@ -89,7 +90,6 @@ const onClick = () => { Methods.AlertMessage("Hello Worlld") }
     display: flex;
     justify-content: space-between;
     margin-top: 5%;
-
 }
 
 .cardFooter span {
