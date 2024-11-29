@@ -14,11 +14,8 @@ import { Container, Logo, Input, UiButton, ButtonTypeEnum, IconTypeEnum } from '
             </RouterLink>
             <Input class="search"></Input>
             <div class="buttonContainer">
-                <RouterLink to="/about" class="rout">
-                    <UiButton :type="ButtonTypeEnum.Text">Поддержка</UiButton>
-                </RouterLink>
-
-                <UiButton :type="ButtonTypeEnum.Text">О нас</UiButton>
+                <UiButton :type="ButtonTypeEnum.RoutText" route-to="/support">Поддержка</UiButton>
+                <UiButton :type="ButtonTypeEnum.RoutText" route-to="/about">О нас</UiButton>
             </div>
         </Container>
 
@@ -40,11 +37,6 @@ import { Container, Logo, Input, UiButton, ButtonTypeEnum, IconTypeEnum } from '
     border-radius: 0 0 5px 5px;
 
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-}
-
-.rout {
-    text-decoration: none;
-    color: black;
 }
 
 .header_container {

@@ -40,9 +40,9 @@ onBeforeUnmount(() => {
 
 </script>
 <template>
-    <div class="wraper" >
-        <div  class="carousel" :style="corouselStyle" >
-            <img v-for="item, index in store.offers" :src="item.image" :alt="index.toString()" >
+    <div class="wraper">
+        <div class="carousel" :style="corouselStyle">
+            <img v-for="item, index in store.offers" :src="item.image" :alt="index.toString()">
         </div>
     </div>
 </template>
@@ -61,7 +61,8 @@ onBeforeUnmount(() => {
 }
 
 .wraper {
-    overflow:hidden;
+    overflow: hidden;
     height: 100%;
+    user-select: none;
 }
 </style>

@@ -1,5 +1,7 @@
 enum ButtonTypeEnum {
     Solid = 'solid',
-    Text = 'text'
+    Text = 'text',
+    RoutSolid = 'routSolid',
+    RoutText = 'routText'
 }
 export { ButtonTypeEnum }

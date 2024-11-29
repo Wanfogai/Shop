@@ -1,5 +1,11 @@
+<script setup lang="ts">
+import { Container } from '@/components';
+</script>
+
 <template>
     <div>
-        {{ $route.fullPath }}
+        <Container>
+            {{ $route.fullPath }}
+        </Container>
     </div>
 </template>

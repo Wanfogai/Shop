@@ -11,6 +11,14 @@ export class Methods {
         return obj[this.getRandomInt(obj.length)]
     }
 
+    static ClearAllDraging() {
+        let dragingEl = document.getElementsByClassName("dragging");
+        for (let index = 0; index < dragingEl.length; index++) {
+            dragingEl[index].remove();
+        }
+        document.getElementById("cursorStyle")?.remove()
+    }
+
     static AlertMessage(message: string) {
         alert(message)
     }

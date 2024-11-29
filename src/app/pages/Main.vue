@@ -4,6 +4,8 @@ import { computed, ref } from 'vue';
 import { store } from '../store';
 import { BasketItemModel } from '@/components/ui/basket-item/models/BasketItemModel';
 import { ButtonTypeEnum, IconTypeEnum, Container, Card, Carousel, Dragable, UiButton, UiIcon, BasketMenu } from '@/components';
+import router from '../router/router';
+import { Methods } from '../store/methods';
 
 /**Текущий перетаскиваемый элемент */
 const currentDragging = ref<CardModel>()
@@ -20,6 +22,14 @@ const items = computed(() => {
 const cardOnDrag = (isDrag: boolean, item: CardModel) => {
     currentDragging.value = isDrag ? item : undefined
 }
+
+const onInfoDrop = () => {
+    if (currentDragging.value) {
+        router.push({ path: `/products/${currentDragging.value.Id}` });
+    }
+    Methods.ClearAllDraging();
+}
+
 /**Сброс элемента в корзину */
 const onBasketDrop = () => {
     if (currentDragging.value) {
@@ -51,6 +61,11 @@ const onBasketDrop = () => {
             <UiIcon :type="IconTypeEnum.Basket" />
         </UiButton>
     </Dragable>
+    <Dragable @drop="onInfoDrop" :can-drag="false">
+        <div class="infoPole">
+
+        </div>
+    </Dragable>
     <BasketMenu>
 
     </BasketMenu>
@@ -65,6 +80,15 @@ const onBasketDrop = () => {
 
 .drag {
     z-index: 9999999;
+}
+
+.infoPole {
+    width: 80px;
+    position: fixed;
+    right: 80px;
+    top: 10%;
+    height: 70%;
+    border-style: dotted;
 }
 
 .basket {

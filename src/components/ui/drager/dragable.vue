@@ -3,6 +3,7 @@ import { getCurrentScope, RefSymbol } from '@vue/reactivity';
 import { computed, getCurrentInstance, onMounted, onUnmounted, ref } from 'vue';
 import { PositionModel } from './models/PositionModel';
 import { CardModel } from '@/components/widget/card/models/CardModel';
+import { Methods } from '@/app/store/methods';
 
 /**HTML елементы DragWrap и самого клона */
 const $dragWraper = ref<HTMLDivElement>()
@@ -75,8 +76,9 @@ const onMouseDragDowm = (event: MouseEvent) => {
     cloneEl.value.style.top = `${event.clientY - offsetY.value}px`
 
     //Задание стиля курсора (сжатый кулак)
-    cursorStyle.value = document.createElement('style');
-    cursorStyle.value.innerHTML = '*{cursor: grabbing!important;}';
+    cursorStyle.value = document.createElement('style')
+    cursorStyle.value.innerHTML = '*{cursor: grabbing!important;}'
+    cursorStyle.value.id = "cursorStyle"
 
 
     //Добавление клона на страницу и присваивание ему эвентов
@@ -99,9 +101,11 @@ const onMouseDargUp = (event: MouseEvent) => {
     //Удаление стиля курсора
     cursorStyle.value?.remove();
 
+
     //Удаление евентов
     document.removeEventListener('mouseup', onMouseDargUp)
     document.removeEventListener('mousemove', onMouseDragMove)
+    Methods.ClearAllDraging();
 }
 
 /**Перемещение карты  */

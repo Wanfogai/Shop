@@ -22,6 +22,7 @@ for (let index = 0; index < 20; index++) {
     new CardFiler(require("@/app/assets/images/goviadina.png"), "Мясо", "Говядина")
     ])
     products.push(new CardModel({
+        Id: index,
         Name: (<CardFiler>currentCard).Name,
         Type: (<CardFiler>currentCard).Type,
         Image: (<CardFiler>currentCard).Image.toString(),

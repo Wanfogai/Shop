@@ -29,7 +29,6 @@ const onClick = () => { Methods.AlertMessage("Hello Worlld") }
 
             <div class="cardFooter">
                 <span>{{ card.Price }} $</span>
-                <UiButton :type="ButtonTypeEnum.Solid" :onclick="onClick">Подробнее ||></UiButton>
             </div>
         </div>
     </div>
@@ -46,7 +45,7 @@ const onClick = () => { Methods.AlertMessage("Hello Worlld") }
     border-color: gray;
     background-color: white;
     width: 280px;
-    min-height: 550px;
+    min-height: 570px;
     flex-direction: column;
     justify-content: space-between;
 }
