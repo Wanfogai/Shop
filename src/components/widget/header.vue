@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 import { ref, defineModel, ModelRef } from 'vue';
-import { Container, Logo, Input, UiButton, ButtonTypeEnum, IconTypeEnum } from '@/components';
+import { Container, Logo, searchBar, UiButton, ButtonTypeEnum, IconTypeEnum } from '@/components';
 
 
 </script>
@@ -12,9 +12,9 @@ import { Container, Logo, Input, UiButton, ButtonTypeEnum, IconTypeEnum } from '
                     <h1>Core</h1>.io
                 </Logo>
             </RouterLink>
-            <Input class="search"></Input>
+            <searchBar class="search"></searchBar>
             <div class="buttonContainer">
-                <UiButton :type="ButtonTypeEnum.RoutText" route-to="/support">Поддержка</UiButton>
+                <UiButton :type="ButtonTypeEnum.RoutText" route-to="support">Поддержка</UiButton>
                 <UiButton :type="ButtonTypeEnum.RoutText" route-to="/about">О нас</UiButton>
             </div>
         </Container>

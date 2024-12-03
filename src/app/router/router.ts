@@ -1,17 +1,19 @@
-import { createMemoryHistory, createRouter } from 'vue-router'
-import { AbouPage, MainPage, SupportPage } from '../pages'
+import { createMemoryHistory, createRouter, createWebHistory } from 'vue-router'
+import { AbouPage, MainPage, ProductPage, SupportPage } from '../pages'
+import { computed, ref } from 'vue'
+import { store } from '../store'
 
 
 
 const routes = [
-    { path: "/products/:id", component: SupportPage },
-    { path: '/support', component: SupportPage },
-    { path: '/about', component: AbouPage },
-    { path: "/", component: MainPage }
+    { name: 'products', path: "/products/:id", component: ProductPage },
+    { name: 'support', path: '/support', component: SupportPage },
+    { name: 'about', path: '/about', component: AbouPage },
+    { name: 'main', path: "/", component: MainPage }
 ]
 
 const router = createRouter({
-    history: createMemoryHistory(),
+    history: createWebHistory(),
     routes,
 })
 

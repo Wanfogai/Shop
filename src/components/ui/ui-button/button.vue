@@ -8,6 +8,8 @@ const props = defineProps({
     routeTo: { type: String, default: '#' },
     text: { type: String, default: '' },
     width: { type: String, default: '' },
+    color: { type: String, default: '' },
+    fontColor: { type: String, default: "black" },
     height: { type: String, default: '' },
     fontSize: { type: String, default: '' },
     fontWeight: { type: String, default: '' },
@@ -33,6 +35,8 @@ const buttonStyle = computed(() => ({
     fontSize: props.fontSize + "px",
     fontWeight: props.fontWeight,
     opacity: props.opacity,
+    color: props.fontColor,
+    backgroundColor:props.color
 }))
 </script>
 

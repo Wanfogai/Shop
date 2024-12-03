@@ -86,6 +86,7 @@ const onMouseDragDowm = (event: MouseEvent) => {
     document.head.appendChild(cursorStyle.value);
     document.addEventListener('mouseup', onMouseDargUp)
     document.addEventListener('mousemove', onMouseDragMove)
+    
 }
 
 const onMouseDargUp = (event: MouseEvent) => {

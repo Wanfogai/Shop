@@ -12,7 +12,6 @@ const currentDragging = ref<CardModel>()
 
 const onBasketClick = () => store.basketMenuActive = !store.basketMenuActive
 
-
 /**Реизация поиска(элеметы фильтрующиеся по ключевым словам)*/
 const items = computed(() => {
     return store.products.filter((el) => el.Name?.toLowerCase().trim().includes(store.searchString.toLowerCase().trim()))
@@ -23,12 +22,6 @@ const cardOnDrag = (isDrag: boolean, item: CardModel) => {
     currentDragging.value = isDrag ? item : undefined
 }
 
-const onInfoDrop = () => {
-    if (currentDragging.value) {
-        router.push({ path: `/products/${currentDragging.value.Id}` });
-    }
-    Methods.ClearAllDraging();
-}
 
 /**Сброс элемента в корзину */
 const onBasketDrop = () => {
@@ -60,11 +53,6 @@ const onBasketDrop = () => {
         <UiButton :type="ButtonTypeEnum.Text" class="basket" @click="onBasketClick">
             <UiIcon :type="IconTypeEnum.Basket" />
         </UiButton>
-    </Dragable>
-    <Dragable @drop="onInfoDrop" :can-drag="false">
-        <div class="infoPole">
-
-        </div>
     </Dragable>
     <BasketMenu>
 
@@ -106,7 +94,6 @@ const onBasketDrop = () => {
     justify-content: center;
     align-items: center;
     margin: 30px auto;
-    height: 100%;
 
 }
 </style>

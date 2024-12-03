@@ -13,7 +13,8 @@ const onClick = () => { Methods.AlertMessage("Hello Worlld") }
 </script>
 <template>
     <div class="card_wraper">
-        <div class="cardHeader"><img :src="card.Image" class="itemImg">
+        <div class="cardHeader">
+            <img :src="card.Image" class="itemImg">
         </div>
         <div class="cardCenter">
             <span class="name">{{ props.card.Name }}</span>
@@ -27,8 +28,9 @@ const onClick = () => { Methods.AlertMessage("Hello Worlld") }
                 <span v-else class="noExist"> Нет в наличии</span>
             </div>
 
-            <div class="cardFooter">
+            <div class="cardFooter" @mousedown.prevent.stop>
                 <span>{{ card.Price }} $</span>
+                <UiButton :type="ButtonTypeEnum.RoutSolid" :route-to="`products/${card.Id}`">Подробнее }=></UiButton>
             </div>
         </div>
     </div>
